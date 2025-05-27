@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-httpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-httpd
+  template:
+    metadata:
+      labels:
+        app: sample-httpd
+    spec:
+      containers:
+        - name: httpd
+          image: <your-dockerhub-username>/sample-httpd:latest
+          ports:
+            - containerPort: 80
